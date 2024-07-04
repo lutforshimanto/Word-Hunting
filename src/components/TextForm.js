@@ -78,7 +78,7 @@ const TextForm = (props) => {
 
     function toAlternatingCase(str) {
         return str.split('').map((char, index) => {
-            return index % 2 === 0 ? char.toLowerCase() : char.toUpperCase();
+            return index % 2 == 0 ? char.toLowerCase() : char.toUpperCase();
         }).join('');
       }
 

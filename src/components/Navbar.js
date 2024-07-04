@@ -24,7 +24,7 @@ const defaultProps = {};
  */
 const Navbar = (props) => {
     return <div>
-        <nav className="navbar navbar-expand-lg bg-body-tertiary">
+        <nav className={`navbar navbar-expand-lg navbar-${props.mode} bg-${props.mode}`}>
         <div className="container-fluid">
           <a className="navbar-brand" href="/">{props.title}</a>
           <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -39,10 +39,14 @@ const Navbar = (props) => {
                 <a className="nav-link" href="/">{props.aboutText}</a>
               </li>
             </ul>
-            <form className="d-flex" role="search">
+            {/* <form className="d-flex" role="search">
               <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
               <button className="btn btn-outline-success" type="submit">Search</button>
-            </form>
+            </form> */}
+        <div className={`form-check form-switch mx-3 text-${props.mode==="dark"?"light":"dark"}`}>
+                <input className="form-check-input" onClick={props.toggleMode} type="checkbox" role="switch" id="flexSwitchCheckDefault"/>
+                <label className="form-check-label" htmlFor="flexSwitchCheckDefault">Enable Darkmode</label>
+            </div>
           </div>
         </div>
       </nav>
@@ -50,12 +54,13 @@ const Navbar = (props) => {
 }
 
 Navbar.propTypes = {
-    title: PropTypes.string,
-    aboutText: PropTypes.string
+    title: PropTypes.string.isRequired,
+    aboutText: PropTypes.string.isRequired
 };
 Navbar.defaultProps = {
-    title: 'Lorem',
-    aboutText: 'Lorem, ipsum dolor.'
+    title: "Lorem",
+    aboutText: "Lorem, ipsum dolor.",
+    mode: "light"
 };
 // #endregion
 
